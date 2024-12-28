@@ -6,21 +6,23 @@
     <title>Seyed Hojat Hosseini - Cybersecurity Specialist</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            color: #333;
         }
         .container {
-            width: 80%;
+            width: 85%;
             margin: auto;
             overflow: hidden;
         }
         header {
             background: #333;
             color: #fff;
-            padding-top: 30px;
+            padding-top: 20px;
+            padding-bottom: 10px;
             min-height: 70px;
             border-bottom: #0779e4 3px solid;
         }
@@ -44,17 +46,19 @@
         }
         header #branding h1 {
             margin: 0;
+            font-size: 24px;
         }
         header nav {
             float: right;
             margin-top: 10px;
         }
         .showcase {
-            background: #0779e4;
+            background: url('https://example.com/security-background.jpg') no-repeat center center/cover;
             color: #fff;
             height: 400px;
             text-align: center;
             padding-top: 100px;
+            background-size: cover;
         }
         .showcase h1 {
             font-size: 55px;
@@ -80,6 +84,25 @@
             text-align: center;
             padding: 10px 0;
             margin-top: 20px;
+        }
+        .contact-info a {
+            color: #0779e4;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .skills-list li {
+            flex: 1 1 45%;
+            background: #0779e4;
+            color: #fff;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -123,6 +146,13 @@
             <h2>Education</h2>
             <p><strong>Bachelor of Computer Software Engineering</strong></p>
             <p>Miaad University, Iran (September 2018 - June 2020)</p>
+            <h2>Certifications & Training</h2>
+            <ul>
+                <li>Become a Penetration Tester</li>
+                <li>Become an Ethical Hacker</li>
+                <li>CompTIA CySA+</li>
+                <li>HackTheBox Academy courses</li>
+            </ul>
         </div>
     </section>
 
@@ -157,7 +187,7 @@
     <section id="skills" class="container">
         <div class="bio">
             <h2>Skills</h2>
-            <ul>
+            <ul class="skills-list">
                 <li>Security Operations: SOC, Incident Response, Threat Hunting, Risk Management</li>
                 <li>Application Security: Web App Security, API Security, Mobile App Security, Secure Coding</li>
                 <li>Automation & Scripting: Python, Java, Bash, PowerShell</li>
