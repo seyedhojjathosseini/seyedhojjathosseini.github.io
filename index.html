@@ -5,139 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seyed Hojat Hosseini - Cybersecurity Specialist</title>
     <style>
+        /* General Styles */
         body {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #121212;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
+            color: #f0f0f0;
         }
-        .container {
-            width: 85%;
-            margin: auto;
-            overflow: hidden;
-        }
-        header {
-            background: #1f1f1f;
-            color: #ffffff;
-            padding: 20px 0;
-            border-bottom: #00ff00 3px solid;
-        }
-        header a {
+        h1, h2, h3 {
             color: #00ff00;
+        }
+        a {
             text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        header ul {
-            padding: 0;
-            list-style: none;
-        }
-        header li {
-            float: left;
-            display: inline;
-            padding: 0 20px 0 20px;
-        }
-        header #branding {
-            float: left;
-        }
-        header #branding h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        header nav {
-            float: right;
-            margin-top: 10px;
-        }
-        .showcase {
-            background: url('https://example.com/hacker-background.jpg') no-repeat center center/cover;
-            color: #ffffff;
-            height: 400px;
-            text-align: center;
-            padding-top: 100px;
-        }
-        .showcase h1 {
-            font-size: 55px;
-            margin-top: 0;
-        }
-        .showcase p {
-            font-size: 20px;
-        }
-        section {
-            padding: 20px;
-            margin-top: 20px;
-        }
-        .bio {
-            background: #1f1f1f;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-        }
-        footer {
-            background: #1f1f1f;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-        .contact-info a {
             color: #00ff00;
-            text-decoration: none;
         }
-        .contact-info a:hover {
+        a:hover {
             text-decoration: underline;
         }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(to right, #00ff00, #121212);
+            padding: 40px 0;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        /* Showcase Section */
+        .showcase {
+            background: url('https://example.com/hacker-background.jpg') no-repeat center center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            color: #ffffff;
+            background-size: cover;
+        }
+        .showcase h1 {
+            font-size: 4rem;
+        }
+        .showcase p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        .bio {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 255, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        .bio p {
+            font-size: 1.1rem;
+        }
+
+        /* Skills Section */
         .skills-list {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
         }
         .skills-list li {
-            flex: 1 1 45%;
-            background: #00ff00;
-            color: #000000;
-            margin: 5px;
-            padding: 10px;
-            border-radius: 5px;
+            background-color: #00ff00;
+            color: #121212;
+            padding: 15px;
+            border-radius: 8px;
+            width: 45%;
+            text-align: center;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(0, 255, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .skills-list li:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #121212;
+            color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            .skills-list li {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="container">
-            <div id="branding">
-                <h1>Seyed Hojat Hosseini</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>Seyed Hojat Hosseini</h1>
+        <p>Cybersecurity Specialist | SOC & SOAR Engineer | Penetration Tester | Ethical Hacker</p>
+        <nav>
+            <ul>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </nav>
     </header>
 
     <div class="showcase">
-        <div class="container">
-            <h1>Cybersecurity Specialist</h1>
-            <p>SOC & SOAR Engineer | Penetration Tester | Ethical Hacker</p>
-        </div>
+        <h1>Welcome to My Cybersecurity Portfolio</h1>
+        <p>Exploring the digital frontier, defending against threats, and automating security solutions</p>
     </div>
 
-    <section id="contact" class="container">
+    <section id="contact">
         <div class="bio">
             <h2>Contact Information</h2>
             <p><strong>Phone:</strong> +98 933 877 6977</p>
-            <p><strong>Email:</strong> <a href="mailto:SeyedHojjatHosseini@gmail.com" class="contact-info">SeyedHojjatHosseini@gmail.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/seyedhojjathosseini" target="_blank" class="contact-info">linkedin.com/in/seyedhojjathosseini</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/seyedhojjathosseini" target="_blank" class="contact-info">github.com/seyedhojjathosseini</a></p>
+            <p><strong>Email:</strong> <a href="mailto:SeyedHojjatHosseini@gmail.com">SeyedHojjatHosseini@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/seyedhojjathosseini" target="_blank">linkedin.com/in/seyedhojjathosseini</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/seyedhojjathosseini" target="_blank">github.com/seyedhojjathosseini</a></p>
             <p><strong>Address:</strong> Tehran, Iran</p>
         </div>
     </section>
 
-    <section id="education" class="container">
+    <section id="education">
         <div class="bio">
             <h2>Education</h2>
             <p><strong>Bachelor of Computer Software Engineering</strong></p>
@@ -152,7 +179,7 @@
         </div>
     </section>
 
-    <section id="experience" class="container">
+    <section id="experience">
         <div class="bio">
             <h2>Experience</h2>
             <h3>Informatics Services Corporation, Tehran, Iran</h3>
@@ -170,32 +197,24 @@
                 <li>Expanded skills to mobile application penetration testing.</li>
                 <li>Developed a Python-based tool for identifying vulnerabilities.</li>
             </ul>
-
-            <h3>Raja Information Technology Company, Tehran, Iran</h3>
-            <p><strong>Cybersecurity Expert specializing in Penetration Testing</strong> (August 2015 - August 2017)</p>
-            <ul>
-                <li>Played a key role in multiple banking projects, including CoreBanking.</li>
-                <li>Managed a team of 4 people as Project Manager in penetration testing projects.</li>
-            </ul>
         </div>
     </section>
 
-    <section id="skills" class="container">
-        <div class="bio">
-            <h2>Skills</h2>
-            <ul class="skills-list">
-                <li>Security Operations: SOC, Incident Response, Threat Hunting, Risk Management</li>
-                <li>Application Security: Web App Security, API Security, Mobile App Security, Secure Coding</li>
-                <li>Automation & Scripting: Python, Java, Bash, PowerShell</li>
-                <li>Security Tools: SIEM, IDS/IPS, Nessus, Metasploit, Burp Suite, Wireshark, Nmap, OWASP ZAP</li>
-                <li>AI & Machine Learning: AI Integration, ChatGPT, Machine Learning, AI-based Automation</li>
-                <li>Soft Skills: Problem Solving, Critical Thinking, Communication, Team Collaboration, Project Management</li>
-            </ul>
-        </div>
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+            <li>Security Operations: SOC, Incident Response, Threat Hunting</li>
+            <li>Application Security: Web, API, Mobile, Secure Coding</li>
+            <li>Automation & Scripting: Python, Java, Bash, PowerShell</li>
+            <li>Security Tools: SIEM, Nessus, Metasploit, Burp Suite, Wireshark</li>
+            <li>AI & Machine Learning: AI Integration, Automation</li>
+            <li>Soft Skills: Problem Solving, Team Collaboration, Project Management</li>
+        </ul>
     </section>
 
     <footer>
         <p>&copy; 2024 Seyed Hojat Hosseini. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
