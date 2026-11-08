@@ -1,0 +1,21 @@
+Suggested GitHub profile settings
+
+Name:
+Seyed Hojjat Hosseini
+
+Bio (copy into the GitHub Bio field):
+SOC Operations & Detection Engineering | Threat Hunting | Security Automation | Building practical SOAR solutions.
+
+Website:
+https://seyedhojjathosseini.github.io/
+
+Social link:
+https://www.linkedin.com/in/seyedhojjathosseini/
+
+Suggested pinned repositories (after README/code and safety review):
+1. DNS-Beaconing
+2. ad-kerberos-roast-scanner
+3. NessusReporter
+4. soarsystems (this is the public company website repository, not the private SOAR product source)
+
+Do not pin the legacy Hojat game demos or the old securesoar repository until their contents have been reviewed and cleaned up.
